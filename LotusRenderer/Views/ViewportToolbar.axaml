@@ -1,0 +1,49 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="LotusRenderer.Views.ViewportToolbar">
+        
+        <Border Grid.Row="0" Background="#252526" BorderBrush="#3E3E42" BorderThickness="0,0,0,1" Padding="5">
+                <StackPanel Orientation="Horizontal" Spacing="10">
+                
+                        <!-- Main View Mode Selector -->
+                        <StackPanel Orientation="Horizontal" Spacing="5" VerticalAlignment="Center">
+                                <TextBlock Text="Mode:" VerticalAlignment="Center" Foreground="#AAAAAA" FontSize="12"/>
+                                <ComboBox x:Name="ComboRenderMode" SelectedIndex="0" Width="140" Height="28"
+                                          SelectionChanged="ComboRenderMode_OnSelectionChanged">
+                                        <ComboBoxItem>Path Tracer</ComboBoxItem>
+                                        <ComboBoxItem>Debug View</ComboBoxItem>
+                                </ComboBox>
+                        </StackPanel>
+
+                        <!-- Separator -->
+                        <Rectangle Width="1" Height="16" Fill="#3E3E42" VerticalAlignment="Center"/>
+
+                        <!-- Debug Channels (Only visible if Index 1 'Debug View' is selected) -->
+                        <StackPanel Orientation="Horizontal" Spacing="5" VerticalAlignment="Center"
+                                    IsVisible="{Binding #ComboRenderMode.SelectedIndex}">
+                                <TextBlock Text="Channel:" VerticalAlignment="Center" Foreground="#AAAAAA" FontSize="12"/>
+                                <ComboBox x:Name="ComboDebugChannel" SelectedIndex="0" Width="160" Height="28" 
+                                          SelectionChanged="ComboDebugChannel_OnSelectionChanged">
+                                        <ComboBoxItem>Random Gen</ComboBoxItem>
+                                        <ComboBoxItem>Color Buffer</ComboBoxItem>
+                                        <ComboBoxItem>Normal Buffer</ComboBoxItem>
+                                        <ComboBoxItem>BVH Heatmap (TODO)</ComboBoxItem>
+                                        <ComboBoxItem>Hdri Only</ComboBoxItem>
+                                        <ComboBoxItem>Depth Buffer</ComboBoxItem>
+                                        <ComboBoxItem>Zebra Spacing</ComboBoxItem>
+                                        <ComboBoxItem>Geometry Id (TODO)</ComboBoxItem>
+                                        <ComboBoxItem>UV Coordinates (TODO)</ComboBoxItem>
+                                        <ComboBoxItem>Barycentrics (TODO)</ComboBoxItem>
+                                        <ComboBoxItem>Roughness Buffer</ComboBoxItem>
+                                        <ComboBoxItem>Metallic Buffer</ComboBoxItem>
+                                        <ComboBoxItem>Emissive Buffer</ComboBoxItem>
+                                        <ComboBoxItem>Alpha Value</ComboBoxItem>
+                                </ComboBox>
+                        </StackPanel>
+                
+                </StackPanel>
+        </Border>
+</UserControl>

@@ -1,0 +1,154 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="450"
+             x:Class="LotusRenderer.Views.SidePanel">
+    <Border Background="Gray" Grid.Row="0" Grid.Column="0" MinWidth="300">
+        <DockPanel Margin="8" LastChildFill="True">
+    
+            <!-- temporary thing for debugging -->
+            <TextBlock Name="TxtTimingOfThings" DockPanel.Dock="Bottom" Margin="0,10,0,0">
+                Timing of Things:
+                1,
+                2,
+                3
+            </TextBlock>
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel Orientation="Vertical" Spacing="10" VerticalAlignment="Top">
+                <TextBlock>Scene Settings</TextBlock>
+                <Separator Height="2" Background="Gray"/>
+                
+                <Expander VerticalAlignment="Top"
+                          HorizontalAlignment="Stretch"
+                          HorizontalContentAlignment="Stretch"
+                          Name="ExpanderModel"
+                          Expanded="Expanders_Changed" Collapsed="Expanders_Changed">
+                    <Expander.Header>
+                        Model
+                    </Expander.Header>
+                    <StackPanel Orientation="Vertical" Spacing="10" VerticalAlignment="Top">
+                        <Button Name="BtnLoadModel" 
+                                Content="Load Model..."
+                                HorizontalAlignment="Stretch"
+                                HorizontalContentAlignment="Center"
+                                Click="BtnLoadModel_OnClick"/>
+                
+                        <Button Name="BtnClearModel" 
+                                Content="Clear Model Data"
+                                HorizontalAlignment="Stretch"
+                                HorizontalContentAlignment="Center"
+                                Click="BtnClearModel_OnClick"/>
+                    </StackPanel>
+                </Expander>
+                
+                <Expander VerticalAlignment="Top"
+                          HorizontalAlignment="Stretch"
+                          HorizontalContentAlignment="Stretch"
+                          Name="ExpanderEnvironment"
+                          Expanded="Expanders_Changed" Collapsed="Expanders_Changed">
+                    <Expander.Header>
+                        Environment
+                    </Expander.Header>
+                    <StackPanel Orientation="Vertical" Spacing="10" VerticalAlignment="Top">
+                        <Button Name="BtnLoadHdri" 
+                                Content="Load HDRI.."
+                                HorizontalAlignment="Stretch"
+                                HorizontalContentAlignment="Center"
+                                Click="BtnLoadHdri_OnClick"/>
+                
+                        <TextBlock>Intensity</TextBlock>
+                        <Slider Name="SliderHdrIntensity" 
+                                Value="0.3" Minimum="0.0" Maximum="1.0"
+                                ValueChanged="SliderHdriIntensity_ValueChanged"/>
+                    
+                        <TextBlock>Orientation</TextBlock>
+                        <Slider Name="SliderHdrOrientation" 
+                                Value="0" Minimum="0" Maximum="360"
+                                ValueChanged="SliderHdriOrientation_ValueChanged"/>
+                        
+                        <TextBlock Text="Display Mode:" FontSize="12"/>
+                        <ComboBox x:Name="ComboHdriDisplayMode" SelectedIndex="0" Height="28" 
+                                  SelectionChanged="ComboHdriDisplayMode_Changed">
+                            <ComboBoxItem>Show Image</ComboBoxItem>
+                            <ComboBoxItem>Hide Image</ComboBoxItem>
+                        </ComboBox>
+                        
+                        <Separator Height="2" Background="Gray" />
+                        <TextBlock>Linear Fog Intensity</TextBlock>
+                        <Slider Name="SliderLinearFogDensity" 
+                                Value="0.0" Minimum="0.0" Maximum="1.0"
+                                ValueChanged="SliderLinearFogDensity_ValueChanged"/>
+                        <TextBlock>Linear Fog G</TextBlock>
+                        <Slider Name="SliderLinearFogG" 
+                                Value="0.0" Minimum="-1.0" Maximum="1.0"
+                                ValueChanged="SliderLinearFogG_ValueChanged"/>
+                        <TextBlock>Linear Fog Start Dist</TextBlock>
+                        <Slider Name="SliderLinearFogStartDist" 
+                                Value="5.0" Minimum="0.0" Maximum="50.0"
+                                ValueChanged="SliderLinearStartDist_ValueChanged"/>
+                        <TextBlock>Linear Fog Color</TextBlock>
+                        <ColorPicker Name="SliderLinearFogColor"
+                                     Height="32"
+                                     HorizontalAlignment="Stretch"
+                                     ColorChanged="SliderLinearFogColor_ValueChanged"/>
+                        <TextBlock>Fog Noise Size</TextBlock>
+                        <Slider Name="SliderFogNoiseSize"
+                                Value="10.0" Minimum="1.0" Maximum="100.0"
+                                ValueChanged="SliderFogNoiseSize_ValueChanged"/>
+                        <TextBlock>Fog Noise Strength</TextBlock>
+                        <Slider Name="SliderFogNoiseStrength"
+                                Value="0.8" Minimum="0.0" Maximum="1.0"
+                                ValueChanged="SliderFogNoiseStrength_ValueChanged"/>
+                        
+                        
+                    </StackPanel>
+                </Expander>
+                
+                <Expander VerticalAlignment="Top"
+                          HorizontalAlignment="Stretch"
+                          HorizontalContentAlignment="Stretch"
+                          Name="ExpanderCamera"
+                          Expanded="Expanders_Changed" Collapsed="Expanders_Changed">
+                    <Expander.Header>
+                        Camera and Film
+                    </Expander.Header>
+                    <StackPanel Orientation="Vertical" Spacing="10" VerticalAlignment="Top">
+                        <TextBlock>Exposure</TextBlock>
+                        <Slider Name="SliderCameraExposure" 
+                                Value="0.0" Minimum="-10.0" Maximum="10.0"
+                                ValueChanged="SliderCameraExposure_ValueChanged"/>
+                        
+                        <TextBlock>Bloom Intensity</TextBlock>
+                        <Slider Name="SliderBloomIntensity" 
+                                Value="1.0" Minimum="0.0" Maximum="3.0"
+                                ValueChanged="SliderBloomIntensity_ValueChanged"/>
+                        
+                        <TextBlock>Bloom Threshold</TextBlock>
+                        <Slider Name="SliderBloomThreshold" 
+                                Value="1.0" Minimum="0.2" Maximum="5.0"
+                                ValueChanged="SliderBloomThreshold_ValueChanged"/>
+                        
+                        <TextBlock>Bloom Radius</TextBlock>
+                        <Slider Name="SliderBloomRadius" 
+                                Value="1.5" Minimum="0.4" Maximum="2.0"
+                                ValueChanged="SliderBloomRadius_ValueChanged"/>
+                        
+                        <TextBlock>Aces Intensity</TextBlock>
+                        <Slider Name="SliderAcesIntensity" 
+                                Value="1.0" Minimum="0.0" Maximum="1.0"
+                                ValueChanged="SliderAcesIntensity_ValueChanged"/>
+                    </StackPanel>
+                </Expander>
+            </StackPanel>
+            </ScrollViewer>
+
+        </DockPanel>
+        
+        
+                        
+    </Border>
+</UserControl>
+
+

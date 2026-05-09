@@ -1,0 +1,11 @@
+﻿.DS_Store
+.idea*
+
+bin*
+obj*
+
+*.exr
+Data*
+*.DotSettings.user
+
+*.sln
